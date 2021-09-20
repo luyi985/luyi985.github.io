@@ -1,1 +1,1 @@
-declare var GH_TOKEN: string;
+declare var ACCESS_TOKEN: string;

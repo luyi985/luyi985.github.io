@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/luyi985/luyi985.github.io/issues"
   },
-  "homepage": "https://github.com/luyi985/luyi985.github.io",
+  "homepage": "https://luyi985.github.io/",
   "devDependencies": {
     "@types/react": "^17.0.21",
     "@types/react-dom": "^17.0.9",

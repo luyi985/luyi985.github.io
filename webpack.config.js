@@ -63,7 +63,7 @@ module.exports = () => {
 
   config.plugins.push(
     new Webpack.DefinePlugin({
-      GH_TOKEN: JSON.stringify(process.env.GH_TOKEN),
+      ACCESS_TOKEN: JSON.stringify(process.env.ACCESS_TOKEN),
     })
   );
 
