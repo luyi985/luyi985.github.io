@@ -31,8 +31,10 @@ jobs:
       - name: Insall pacakages And Build
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          SECRETS: ${{ secrets }}
         run: |
-          echo "----ACCESS_TOKEN-----"&& echo "$ACCESS_TOKEN" &&
+          echo "----ACCESS_TOKEN-----"&& echo '$ACCESS_TOKEN' &&
+          echo "----SECRETS-----"&& echo '$SECRETS' &&
           npm install &&
           npm run build
       - name: Check Build Files
