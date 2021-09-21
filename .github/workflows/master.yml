@@ -29,12 +29,12 @@ jobs:
           rm -rf docs && rm -rf node_modules package-lock.json
 
       - name: Insall pacakages And Build
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
           echo "----ACCESS_TOKEN-----"&& echo "$ACCESS_TOKEN" &&
           npm install &&
           npm run build
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: Check Build Files
         run: |
           ls docs
