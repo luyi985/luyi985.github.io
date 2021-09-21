@@ -45,5 +45,4 @@ const ConfigProvider: FunctionComponent<{ children: ReactNode }> = ({
 
 const useConfigStore = (): ProviderValue => useContext(Context);
 const GH_GRAPHQL = "https://api.github.com/graphql";
-//onst GH_PERSONAL_ACCESS_TOKEN = GH_PERSONAL_ACCESS_TOKEN || "";
 export { ConfigProvider, useConfigStore, GH_GRAPHQL };

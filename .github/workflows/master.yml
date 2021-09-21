@@ -1,10 +1,6 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [master]
   pull_request:
@@ -24,20 +20,22 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
       - name: clear build files
         run: |
           rm -rf docs && rm -rf node_modules package-lock.json
 
       - name: Insall pacakages And Build
         env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BASE64_ACCESS_TOKEN: ${{ secrets.BASE64_ACCESS_TOKEN }}
         run: |
-          echo "----ACCESS_TOKEN-----"&& echo "$ACCESS_TOKEN" &&
           npm install &&
           npm run build
+
       - name: Check Build Files
         run: |
           ls docs
+
       - name: Save Build Result
         run: |
           git config --global user.email "luyi985@gmail.com" &&
@@ -46,4 +44,5 @@ jobs:
           git add --all &&
           git status &&
           git commit -m "deploy at $(date)" &&
-          git push
+          git push &&
+          echo DONE

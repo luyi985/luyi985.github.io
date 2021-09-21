@@ -1,1 +1,1 @@
-declare var ACCESS_TOKEN: string;
+declare var BASE64_ACCESS_TOKEN: string;

@@ -60,10 +60,13 @@ module.exports = () => {
       throw new Error("config load fail");
     }
   }
-
+  console.info(
+    "=====BASE64_ACCESS_TOKEN=======",
+    process.env.BASE64_ACCESS_TOKEN
+  );
   config.plugins.push(
     new Webpack.DefinePlugin({
-      ACCESS_TOKEN: JSON.stringify(process.env.ACCESS_TOKEN),
+      BASE64_ACCESS_TOKEN: JSON.stringify(process.env.BASE64_ACCESS_TOKEN),
     })
   );
 
