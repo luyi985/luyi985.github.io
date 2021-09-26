@@ -1,4 +1,4 @@
 export default {
   isOpenToHire: true,
-  isToShutDown: true,
+  isToShutDown: false,
 };

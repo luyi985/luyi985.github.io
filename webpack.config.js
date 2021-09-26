@@ -42,7 +42,7 @@ const config = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".json"],
+    extensions: [".tsx", ".ts", ".js"],
   },
   optimization: {
     usedExports: true,
@@ -52,6 +52,7 @@ const config = {
 module.exports = () => {
   if (isProduction) {
     config.mode = "production";
+    // const loadEnv = dotenv.config();
     config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
   } else {
     config.mode = "development";

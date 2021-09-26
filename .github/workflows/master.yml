@@ -20,8 +20,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: Check commit
+        run: |
+          git status &&
+          git log
 
-      - name: clear build files
+      - name: Clear build files
         run: |
           rm -rf docs && rm -rf node_modules package-lock.json
 

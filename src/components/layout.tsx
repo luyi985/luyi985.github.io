@@ -1,6 +1,5 @@
-import styled, { css } from "styled-components";
 import React from "react";
-
+import styled, { css } from "styled-components";
 export const Page = styled.div<{
   justify?: "flex-start" | "flex-end" | "center";
   align?: "flex-start" | "flex-end" | "center";

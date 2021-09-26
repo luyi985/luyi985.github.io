@@ -1,14 +1,13 @@
 import { GraphQLClient, gql } from "graphql-request";
-import { GH_GRAPHQL } from "./configs";
+import { GH_GRAPHQL } from "../configs";
 
-const gqlClient = async (query: string, variables: object) => {
-  const client = new GraphQLClient(GH_GRAPHQL);
-  const headers = {
+export const gqlClient = new GraphQLClient(GH_GRAPHQL, {
+  headers: {
     authorization: `token ${window.atob(BASE64_ACCESS_TOKEN)}`,
-  };
-  const data = await client.request(query, variables, headers);
-  console.log(JSON.stringify(data, undefined, 2));
-};
+    accept: "application/json",
+    "content-type": "application/json",
+  },
+});
 
 const query = gql`
   query ($name: String!, $owner: String!) {
@@ -28,4 +27,6 @@ const query = gql`
   }
 `;
 
-gqlClient(query, { name: "lyi-cli", owner: "luyi985" });
+gqlClient
+  .request(query, { name: "lyi-cli", owner: "luyi985" })
+  .then(console.log);
