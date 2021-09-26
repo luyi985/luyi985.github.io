@@ -1,5 +1,5 @@
 import { GraphQLClient, gql } from "graphql-request";
-import { GH_GRAPHQL } from "../configs";
+import { GH_GRAPHQL } from "@/configs";
 
 export const gqlClient = new GraphQLClient(GH_GRAPHQL, {
   headers: {

@@ -1,10 +1,10 @@
 import React from "react";
-import { AboutMe } from "./aboutMe/index";
-import { Content } from "./content/index";
-import { Repos } from "./repos/index";
-import { Page } from "./components/layout";
-import { Menu } from "./components/menu";
-import { Stress } from "./components/assets/stress";
+import { AboutMe } from "@/aboutMe";
+import { Content } from "@/content";
+import { Repos } from "@/repos";
+import { Page } from "@components/layout";
+import { Menu } from "@components/menu";
+import { Stress } from "@components/assets/stress";
 import {
   HashRouter as Router,
   Switch,

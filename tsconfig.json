@@ -7,7 +7,11 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "baseUrl": "src"
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"],
+      "@components/*": ["components/*"]
+    }
   },
   "exclude": ["node_modules", "docs"],
   "files": ["src/index.tsx", "src/global.d.ts"]

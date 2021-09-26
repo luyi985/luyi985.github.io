@@ -43,6 +43,10 @@ const config = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+      "@components": path.resolve(__dirname, "src/components"),
+    },
   },
   optimization: {
     usedExports: true,

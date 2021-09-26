@@ -1,4 +1,4 @@
-import { buildStore } from "../common/storeBuilder";
+import { buildStore } from "@/common/storeBuilder";
 
 import configData from "./config";
 export type Config = {
