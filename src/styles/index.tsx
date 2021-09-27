@@ -13,6 +13,16 @@ const GlobalStyle = createGlobalStyle`
   p, span, input, button, li , a , label, strong, li {
     line-height: 1.4;
     font-size: inherit;
+    color: inherit;
+    text-decoration: unset;
+  }
+
+  a {
+    font-style: italic;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   p {
@@ -27,7 +37,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3, h4 {
-    margin: 0 0 20px 0;
+    margin: 0 0 0 0;
     padding: 0;
     line-height: 1.2;
   }

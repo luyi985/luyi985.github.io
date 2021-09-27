@@ -1,8 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { AboutMe } from "@/aboutMe";
 import { Content } from "@/content";
 import { Repos } from "@/repos";
-import { Page } from "@components/layout";
+import { Layout, Page } from "@components/layout";
+import { Share } from "@components/share";
 import { Menu } from "@components/menu";
 import { Stress } from "@components/assets/stress";
 import {
@@ -10,28 +11,83 @@ import {
   Switch,
   Route,
   RouteProps,
+  Link,
+  Redirect,
 } from "react-router-dom";
 
 import { useConfigStore } from "./configs";
+import { render } from "react-dom";
+
+const PageHeader: React.FunctionComponent<{}> = () => {
+  return (
+    <Layout
+      background="secondaryDark"
+      template={"100px 50px 1fr"}
+      align="center"
+    >
+      <h1>Lu Yi</h1>
+      <Link to="/about">About</Link>
+      <Share justify="flex-end" />
+    </Layout>
+  );
+};
+
+const AppLayout: React.FunctionComponent<{ children: ReactNode }> = ({
+  children,
+}) => {
+  return (
+    <Page column>
+      <PageHeader />
+      <Menu />
+      {children}
+    </Page>
+  );
+};
 
 const routes: RouteProps[] = [
+  // {
+  //   path: `/`,
+  //   render: () => (
+  //     <AppLayout>
+  //       <p>home page</p>
+  //     </AppLayout>
+  //   ),
+  // },
   {
     path: `/about`,
-    component: AboutMe,
+    render: () => (
+      <AppLayout>
+        <AboutMe />
+      </AppLayout>
+    ),
   },
   {
     path: `/content/:name`,
-    component: Content,
+    render: () => (
+      <AppLayout>
+        <Content />
+      </AppLayout>
+    ),
   },
   {
     path: `/repos/:name`,
-    component: Repos,
+    render: () => (
+      <AppLayout>
+        <Repos />
+      </AppLayout>
+    ),
+  },
+  {
+    path: `*`,
+    render: () => (
+      <AppLayout>
+        <p>home page</p>
+      </AppLayout>
+    ),
   },
 ];
 
-export const Main: React.FunctionComponent<{
-  children?: React.ReactNode;
-}> = ({ children }) => {
+export const Main: React.FunctionComponent<{}> = () => {
   const [config, actions] = useConfigStore();
   const { isToShutDown } = config;
   if (isToShutDown) {
@@ -44,15 +100,12 @@ export const Main: React.FunctionComponent<{
   }
   return (
     <Router>
-      <Page>
-        <Menu />
-        <Switch>
-          {routes.map((route, i) => (
-            <Route key={i} {...route} />
-          ))}
-        </Switch>
-        {!!children && children}
-      </Page>
+      <Switch>
+        {routes.map((route, i) => (
+          <Route key={i} {...route} />
+        ))}
+        {/* <Redirect to="/" /> */}
+      </Switch>
     </Router>
   );
 };

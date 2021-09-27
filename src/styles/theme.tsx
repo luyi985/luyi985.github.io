@@ -1,12 +1,15 @@
 export type Theme = {
   primary: string;
   primaryDark: string;
-  primaryText: string;
   secondary: string;
   secondaryDark: string;
-  secondaryText: string;
   thirdary: string;
+  primaryText: string;
+  primaryDarkText: string;
+  secondaryText: string;
+  secondaryDarkText: string;
   textBackground: string;
+  thirdaryText: string;
   text: string;
   smallText: string;
   middleText: string;
@@ -15,12 +18,15 @@ export type Theme = {
 
 export const theme: Theme = {
   primary: "#cb2D6F",
-  primaryDark: "#501F3A",
   primaryText: "#FEFEFE",
+  primaryDark: "#501F3A",
+  primaryDarkText: "#FEFEFE",
   secondary: "#14A098",
-  secondaryDark: "#0F292F",
   secondaryText: "#FEFEFE",
+  secondaryDark: "#0F292F",
+  secondaryDarkText: "#FEFEFE",
   thirdary: "#CCCCCC",
+  thirdaryText: "#333333",
   textBackground: "#DDDDDD",
   text: "#333333",
   smallText: "12px",

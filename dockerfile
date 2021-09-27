@@ -4,7 +4,6 @@ ARG Token
 
 RUN echo ${Token}
 ENV BASE64_ACCESS_TOKEN ${Token}
-ENV BUILD_TIME=${date}
 WORKDIR /project
 COPY src ./src
 COPY package.json .
