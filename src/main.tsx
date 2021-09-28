@@ -22,11 +22,15 @@ const PageHeader: React.FunctionComponent<{}> = () => {
   return (
     <Layout
       background="secondaryDark"
-      template={"100px 50px 1fr"}
-      align="center"
+      template={"65px 50px 1fr"}
+      align="flex-end"
     >
-      <h1>Lu Yi</h1>
-      <Link to="/about">About</Link>
+      <Link to="/" className="normal no-lingHight">
+        <h1 className="no-lingHight">Lu Yi</h1>
+      </Link>
+      <Link to="/about" className="no-lingHight">
+        About
+      </Link>
       <Share justify="flex-end" />
     </Layout>
   );

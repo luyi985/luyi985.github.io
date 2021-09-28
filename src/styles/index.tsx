@@ -15,13 +15,18 @@ const GlobalStyle = createGlobalStyle`
     font-size: inherit;
     color: inherit;
     text-decoration: unset;
+    .no-lingHight {
+      line-height: 1;
+    }
   }
 
   a {
-    font-style: italic;
+    &:not(.normal) {
+      font-style: italic;
 
-    &:hover {
-      text-decoration: underline;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -40,6 +45,9 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 0 0 0;
     padding: 0;
     line-height: 1.2;
+    .no-lingHight {
+      line-height: 1;
+    }
   }
 
   h1 {
