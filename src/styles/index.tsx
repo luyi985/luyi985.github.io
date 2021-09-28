@@ -9,7 +9,11 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${theme.middleText};
     box-sizing: border-box;
   }
-
+  button {
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+  }
   p, span, input, button, li , a , label, strong, li {
     line-height: 1.4;
     font-size: inherit;
@@ -60,6 +64,11 @@ const GlobalStyle = createGlobalStyle`
 
   h3 {
     font-size: 16px;
+  }
+
+  #modal-root {
+    position:relative;
+    z-index: 9999;
   }
 `;
 

@@ -2,6 +2,8 @@ import React from "react";
 import { useLocation, useRouteMatch } from "react-router-dom";
 import { Layout } from "./layout";
 import { Facebook, LinkedIn, Twitter } from "./assets/icons";
+import { Modal } from "./modal";
+import { Button, IconBtn } from "./button";
 export const Share: React.FunctionComponent<{
   url?: string;
   title?: string;
@@ -18,9 +20,47 @@ export const Share: React.FunctionComponent<{
       align="center"
       justify={justify}
     >
-      <Facebook />
-      <LinkedIn />
-      <Twitter />
+      <Modal
+        title="Test"
+        button={({ setOpen }) => (
+          <IconBtn onClick={() => setOpen(true)} width={30} height={30}>
+            <Facebook />
+          </IconBtn>
+        )}
+        content={() => (
+          <div>
+            <p>modal content</p>
+          </div>
+        )}
+      />
+
+      <Modal
+        title="Test"
+        button={({ setOpen }) => (
+          <IconBtn onClick={() => setOpen(true)} width={30} height={30}>
+            <LinkedIn />
+          </IconBtn>
+        )}
+        content={() => (
+          <div>
+            <p>modal content 1</p>
+          </div>
+        )}
+      />
+
+      <Modal
+        title="Test"
+        button={({ setOpen }) => (
+          <IconBtn onClick={() => setOpen(true)} width={30} height={30}>
+            <Twitter />
+          </IconBtn>
+        )}
+        content={() => (
+          <div>
+            <p>modal content 2</p>
+          </div>
+        )}
+      />
     </Layout>
   );
 };
