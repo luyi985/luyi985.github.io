@@ -15,7 +15,7 @@ const ModalStyles = styled.div`
   right: 0;
 
   .content {
-    min-width: 280px;
+    min-width: 500px;
     overflow: auto;
     display: flex;
     max-height: 70wh;
@@ -73,7 +73,7 @@ export const Modal: React.FunctionComponent<{
               {!hideHeader && (
                 <div className="header">
                   <h3>{title}</h3>
-                  <IconBtn onClick={() => setOpen(false)} >X</IconBtn>
+                  <IconBtn onClick={() => setOpen(false)}>X</IconBtn>
                 </div>
               )}
               {content({ isOpen, setOpen })}

@@ -4,6 +4,7 @@ import { Layout } from "./layout";
 import { Facebook, LinkedIn, Twitter } from "./assets/icons";
 import { Modal } from "./modal";
 import { Button, IconBtn } from "./button";
+import { get } from "lodash";
 export const Share: React.FunctionComponent<{
   url?: string;
   title?: string;
@@ -11,7 +12,9 @@ export const Share: React.FunctionComponent<{
   justify?: "flex-start" | "center" | "flex-end";
 }> = ({ url, title, text, justify }) => {
   const match = useRouteMatch();
-  console.log({ match, url: location.href });
+  const shareUrl = url || location.href;
+  const shareTitle = title || get(match, ["params", "name"], "");
+  const shareSummary = text || "";
   return (
     <Layout
       template={"repeat(3, 30px)"}
@@ -21,7 +24,7 @@ export const Share: React.FunctionComponent<{
       justify={justify}
     >
       <Modal
-        title="Test"
+        title="Share on Facebook"
         button={({ setOpen }) => (
           <IconBtn onClick={() => setOpen(true)} width={30} height={30}>
             <Facebook />
@@ -35,21 +38,21 @@ export const Share: React.FunctionComponent<{
       />
 
       <Modal
-        title="Test"
+        title="Share on LinkedIn"
         button={({ setOpen }) => (
           <IconBtn onClick={() => setOpen(true)} width={30} height={30}>
             <LinkedIn />
           </IconBtn>
         )}
         content={() => (
-          <div>
-            <p>modal content 1</p>
-          </div>
+          <iframe
+            src={`https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${shareTitle}&summary=${shareSummary}`}
+          ></iframe>
         )}
       />
 
       <Modal
-        title="Test"
+        title="Share on Twitter"
         button={({ setOpen }) => (
           <IconBtn onClick={() => setOpen(true)} width={30} height={30}>
             <Twitter />

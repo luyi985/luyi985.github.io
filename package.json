@@ -24,6 +24,7 @@
   },
   "homepage": "https://luyi985.github.io/",
   "devDependencies": {
+    "@types/lodash": "^4.14.175",
     "@types/react": "^17.0.21",
     "@types/react-dom": "^17.0.9",
     "@types/react-router": "^5.1.16",
@@ -44,6 +45,7 @@
     "dotenv": "^10.0.0",
     "graphql": "^15.5.3",
     "graphql-request": "^3.5.0",
+    "lodash": "^4.17.21",
     "markdown-to-jsx": "^7.1.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
