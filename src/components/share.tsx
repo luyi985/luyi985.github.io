@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, useRouteMatch } from "react-router-dom";
 import { Layout } from "./layout";
 import { Facebook, LinkedIn, Twitter } from "./assets/icons";
-import { Modal } from "./modal";
+import { useConfigStore } from "@/configs";
 import { IconBtn } from "./button";
 import { get } from "lodash";
 
@@ -29,7 +29,10 @@ const useShare = (args: {
     linkedinUrl: "",
     windowParams: "",
   });
-  const shareUrl = url || location.href;
+  const [configs, actions] = useConfigStore();
+  const shareUrl = url || configs.webHomeUrl;
+  const shareTitle = title || configs.webTitle;
+  const shareSummary = summary || configs.webSummary;
   React.useEffect(() => {
     if (!shareUrl) return;
     const w = width || 600;
@@ -37,11 +40,9 @@ const useShare = (args: {
     const y = window.top.outerHeight / 2 + window.top.screenY - h / 2;
     const x = window.top.outerWidth / 2 + window.top.screenX - w / 2;
     setShareDate({
-      linkedinUrl: `https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${title}&summary=${summary}`,
-      twitterUrl: `https://twitter.com/intent/tweet?text=${
-        title || summary
-      }&url=${shareUrl}`,
-      faceBookUrl: `https://www.facebook.com/v5.0/dialog/share?display=page&href=${shareUrl}`,
+      linkedinUrl: `https://www.linkedin.com/shareArticle?mini=true&url=${shareUrl}&title=${shareTitle}&summary=${summary}`,
+      twitterUrl: `https://twitter.com/intent/tweet?text=${shareTitle} - ${shareSummary}&url=${shareUrl}`,
+      faceBookUrl: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&src=sdkpreparse`,
       windowParams: `menubar=yes,status=yes,width=${w},height=${h},left=${x},top=${y}`,
     });
   }, [shareUrl]);
@@ -65,10 +66,9 @@ export const Share: React.FunctionComponent<{
   summary?: string;
   justify?: "flex-start" | "center" | "flex-end";
 }> = ({ url, title, summary, justify }) => {
-  const match = useRouteMatch();
   const { shareFacebook, shareTwitter, shareLinkedin } = useShare({
     url,
-    title: title || get(match, "params.name", "Yi's share"),
+    title,
     summary,
   });
 

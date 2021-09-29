@@ -4,6 +4,9 @@ import configData from "./config";
 export type Config = {
   isOpenToHire: boolean;
   isToShutDown: boolean;
+  webHomeUrl: string;
+  webTitle: string;
+  webSummary: string;
 };
 
 const actions = {
